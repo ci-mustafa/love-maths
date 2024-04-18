@@ -25,6 +25,12 @@ function runGame(gameType) {
     let secondRandomNumber = Math.floor(Math.random() * 25) + 1;
     if (gameType === "addition") {
         displayAdditionQuestion(firstRandomNumber, secondRandomNumber);
+    } else if (gameType === "subtract") {
+        displaySubtractionQuestion(firstRandomNumber, secondRandomNumber);
+    } else if (gameType === "multiply") {
+        displayMultiplicationQuestion(firstRandomNumber, secondRandomNumber);
+    } else if (gameType === "division") {
+        displayDivisionQuestion(firstRandomNumber, secondRandomNumber);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -60,16 +66,22 @@ function displayAdditionQuestion(num1, num2) {
 
 // subtract fucntion
 function displaySubtractionQuestion(num1, num2) {
-    
+    document.getElementById("operand1").textContent = num1;
+    document.getElementById("operand2").textContent = num2;
+    document.getElementById('operator').textContent = "-";
 }
 
 // multiply function
 function displayMultiplicationQuestion(num1, num2) {
-    
+    document.getElementById("operand1").textContent = num1;
+    document.getElementById("operand2").textContent = num2;
+    document.getElementById('operator').textContent = "*";
 }
 
 // divide function
 function displayDivisionQuestion(num1, num2) {
-    
+    document.getElementById("operand1").textContent = num1;
+    document.getElementById("operand2").textContent = num2;
+    document.getElementById('operator').textContent = "/";
 }
 
