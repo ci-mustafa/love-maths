@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked submit")
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -38,7 +38,26 @@ function runGame(gameType) {
 }
 
 // function to check answer
+/**
+ * checks the answer aginst the first element
+ * in the returned calculateCorrectAnswer
+ */
 function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+
+    if (userAnswer === calculatedAnswer[0]) {
+        alert(`Correct Answer!`)
+        incrementScore();
+    } else {
+        alert(`OOPs, Wrong answer, The correct answer is: ${calculatedAnswer[0]}`)
+        incrementWrongAnswer();
+    }
+
+    // Clear the answer box
+    document.getElementById("answer-box").value = "";
+    // by calling runGame function we can authomatically update the question
+    runGame(calculatedAnswer[1])
 }
 
 /**
@@ -67,12 +86,25 @@ function calculateCorrectAnswer() {
 }
 
 // function to increment score
+/**
+ * get the current score from the DOM and add it by 1
+ */
 function incrementScore() {
+    let scoreElement = document.getElementById("score");
+    let currentScore = parseInt(scoreElement.textContent);
+    let newScore = currentScore + 1;
+    scoreElement.textContent = newScore;
 }
 
 // function to increment wrong answer point
+/**
+ * get the current incorrect score from the DOM and add it by 1
+ */
 function incrementWrongAnswer() {
-
+    let incorrectScoreElement = document.getElementById("incorrect");
+    let currentIncorrectScore = parseInt(incorrectScoreElement.textContent);
+    let newIncorrectScore = currentIncorrectScore + 1;
+    incorrectScoreElement.textContent = newIncorrectScore;
 }
 
 // addition function
