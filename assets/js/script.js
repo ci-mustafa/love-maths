@@ -74,7 +74,7 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     } else if (operator === "-") {
         return [operand1 - operand2, "subtract"];
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
     } else if (operator === "/") {
         return [operand1 / operand2, "division"];
@@ -116,8 +116,8 @@ function displayAdditionQuestion(num1, num2) {
 
 // subtract fucntion
 function displaySubtractionQuestion(num1, num2) {
-    document.getElementById("operand1").textContent = num1;
-    document.getElementById("operand2").textContent = num2;
+    document.getElementById("operand1").textContent = num1 > num2 ? num1 : num2;
+    document.getElementById("operand2").textContent = num1 > num2 ? num2 : num1;
     document.getElementById('operator').textContent = "-";
 }
 
@@ -125,7 +125,7 @@ function displaySubtractionQuestion(num1, num2) {
 function displayMultiplicationQuestion(num1, num2) {
     document.getElementById("operand1").textContent = num1;
     document.getElementById("operand2").textContent = num2;
-    document.getElementById('operator').textContent = "*";
+    document.getElementById('operator').textContent = "x";
 }
 
 // divide function
