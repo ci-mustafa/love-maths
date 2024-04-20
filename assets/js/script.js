@@ -39,17 +39,35 @@ function runGame(gameType) {
 
 // function to check answer
 function checkAnswer() {
-
 }
 
+/**
+ * get the operands and operator directly from the DOM and return correct answer
+ */
 // function to calculate correct answer
 function calculateCorrectAnswer() {
+
+    let operand1 = parseInt(document.getElementById('operand1').innerText);
+    let operand2 = parseInt(document.getElementById("operand2").innerText);
+    let operator = document.getElementById("operator").innerText;
+
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"];
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
+    } else if (operator === "*") {
+        return [operand1 * operand2, "multiply"];
+    } else if (operator === "/") {
+        return [operand1 / operand2, "division"];
+    } else {
+        alert(`Unimplemented oprator ${operator}`);
+        throw `Unimplemented oprator ${operator}. Aborting!`;
+    }
 
 }
 
 // function to increment score
 function incrementScore() {
-
 }
 
 // function to increment wrong answer point
