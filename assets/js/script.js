@@ -38,7 +38,7 @@ function runGame(gameType) {
     } else if (gameType === "multiply") {
         displayMultiplicationQuestion(firstRandomNumber, secondRandomNumber);
     } else if (gameType === "division") {
-        displayDivisionQuestion(firstRandomNumber, secondRandomNumber);
+        displayDivisionQuestion();
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -137,9 +137,15 @@ function displayMultiplicationQuestion(num1, num2) {
 }
 
 // divide function
-function displayDivisionQuestion(num1, num2) {
-    document.getElementById("operand1").textContent = num1;
-    document.getElementById("operand2").textContent = num2;
-    document.getElementById('operator').textContent = "/";
+function displayDivisionQuestion() {
+    let operand1, operand2;
+    do {
+        operand1 = Math.floor(Math.random() * 25) + 1; // Random number between 1 and 25
+        operand2 = Math.floor(Math.random() * 25) + 1; // Random number between 1 and 25
+    } while (operand1 % operand2 !== 0 || operand1 === operand2); // Ensure operand2 is a factor of operand1 and they are different
+
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "/";
 }
 
